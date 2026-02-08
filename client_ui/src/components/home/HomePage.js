@@ -5,8 +5,8 @@ import Experts from './Experts';
 import Guide from './Guide';
 import Services from './Services';
 import Librarys from './Librarys'
-import Joins from './Joins';
-import Try from './Try';
+import Joins from '../Joins';
+import Try from '../Try';
 
 
 function HomePage() {

@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav
       id="navbar"
-      className="navbar navbar-expand-lg fixed-top navbar-dark "
+      className="navbar navbar-expand-lg fixed-top navbar-dark"
       style={{backgroundColor: "#131B20"}}
     >
       <div className="container py-2">
@@ -34,19 +34,19 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 fs-5">
             <li className="nav-item">
-              <Link to="/signup" className="nav-link">Buisness</Link>
+              <Link to="/" className="nav-link">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/about" className="nav-link">Explore</Link>
+              <Link to="/about" className="nav-link">About</Link>
             </li>
             <li className="nav-item">
-              <Link to="/products" className="nav-link">English</Link>
+              <Link to="/explore" className="nav-link">Explore</Link>
             </li>
             <li className="nav-item">
-              <Link to="/pricing" className="nav-link">Become a seller</Link>
+              <Link to="/category" className="nav-link">Category</Link>
             </li>
             <li className="nav-item">
-              <Link to="/support" className="nav-link">Sign in</Link>
+              <Link to="/login" className="nav-link">Login</Link>
             </li>
           </ul>
         </div>
