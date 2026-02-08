@@ -2,3 +2,110 @@
   margin-right: 2rem;
   /* color: black; */
 }
+
+/* signin */
+/* Page background */
+.signin-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f1a1f, #070b0e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Main card */
+.signin-card {
+  background: #8f2345;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  padding: 60px;
+  gap: 40px;
+}
+
+/* Left content */
+.signin-left h1 {
+  color: #fff;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.signin-left p {
+  color: #f2d7df;
+  margin-bottom: 30px;
+  max-width: 400px;
+}
+
+/* Form */
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signin-form input {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.signin-form button {
+  margin-top: 10px;
+  background: white;
+  color: #8f2345;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.signin-form button:hover {
+  transform: translateY(-2px);
+}
+
+/* Footer */
+.signin-footer {
+  display: block;
+  margin-top: 20px;
+  color: #f2d7df;
+}
+
+.signin-footer a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Right section */
+.signin-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Illustration */
+.signin-illustration {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .signin-card {
+    grid-template-columns: 1fr;
+    padding: 40px;
+  }
+
+  .signin-right {
+    display: none;
+  }
+}
