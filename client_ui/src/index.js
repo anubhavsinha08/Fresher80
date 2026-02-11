@@ -10,18 +10,21 @@ import LogIn from './components/login/login';
 import NotFound from './NotFound';
 import AboutPage from './components/about/AboutPage';
 import Explore from './components/explore/Explore';
-import Category from './components/category/Category';
+// import Category from './components/category/Category';
+import ScrollToTop from './components/ScrollToTop';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
+  <ScrollToTop/>
     <Navbar/>
   <Routes>
     <Route path='/' element={<App/>}/>
     <Route path='/about' element={<AboutPage/>}/>
     <Route path='/register' element={<SignIn/>}/>
     <Route path='/explore' element={<Explore/>}/>
-    <Route path='/category' element={<Category/>}/>
+    {/* <Route path='/category' element={<Category/>}/> */}
     <Route path='/login' element={<LogIn/>}/>
     <Route path='/*' element={<NotFound/>}/>
     {/* <Route path='*' element={<NotFound/>}/> */}

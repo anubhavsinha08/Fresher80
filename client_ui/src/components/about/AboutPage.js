@@ -8,11 +8,12 @@ import PeopleSection from './PeopleSection';
 function AboutPage() {
     return ( 
         <>
+        <AboutText/>
         <AboutSection/>
         <Try/>
-        <AboutText/>
-        <Joins/>
+        
         <PeopleSection/>
+        <Joins/>
         </>
      );
 }

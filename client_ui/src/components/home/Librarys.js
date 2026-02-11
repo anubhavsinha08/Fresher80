@@ -39,7 +39,7 @@ function Librarys({ images = [] }) {
   }
 
   return (
-    <div className="container p-5 my-5">
+    <div className="container-fluid p-5 my-5">
         <div style={styles.grid}>
       {images.slice(0, 9).map((img, index) => (
         <div
