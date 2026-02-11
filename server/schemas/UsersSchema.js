@@ -31,9 +31,10 @@ const UsersSchema = new Schema(
       type: String,
       required: false,
     },
-    isSeller: {
-      type: Boolean,
-      default: false,
+    role: {
+      type: String,
+      required: true,
+      enum: ["client","freelancer"]
     },
   },
   {
