@@ -1,18 +1,30 @@
-body{
+/* =========================
+   GLOBAL
+========================= */
+
+body {
+  margin: 0;
+  padding: 0;
   background: #090D10;
   color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.smoky-wrapper {
+/* =========================
+   SMOKY HERO BACKGROUND
+========================= */
+
+.smoky-wrapper, .hero {
   position: relative;
   overflow: hidden;
 }
 
 .smoky-img {
-  width: 100%;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   filter: blur(4px);
-  transform: scale(1.1); /* prevents edge clipping */
+  transform: scale(1.1);
 }
 
 .smoky-wrapper::after {
@@ -27,56 +39,115 @@ body{
   z-index: 2;
 }
 
+/* =========================
+   HERO SECTION
+========================= */
 
-
-/* hero text */
 .hero {
+  width: 100%;
+  height: 100vh;   
+  overflow: hidden;    
   position: relative;
-  height: 100vh; /* full screen hero */
 }
 
 .hero-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;  
+  object-position: center; 
 }
+
 
 .hero-content {
   position: absolute;
   inset: 0;
   z-index: 3;
-  /* align-items: center; */
-  /* text-align: center; */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
   color: white;
-  padding: 1rem;
 }
 
 .hero-content h1 {
-  font-size: 7em;
+  font-size: clamp(2.5rem, 6vw, 7rem);
   font-weight: 600;
+  line-height: 1.1;
 }
 
-.transparentBorder{
+/* =========================
+   HERO BUTTONS
+========================= */
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  padding: 1rem;
+  font-size: 1.25rem;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background-color: #962545;
+  color: white;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: white;
   border: 2px solid #962545;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2.5rem;
+  }
+
+  .hero-btn {
+    max-width: 100%;
+    font-size: 1.1rem;
+  }
+}
+
+
+/* =========================
+   SERVICE CARDS (SCROLLABLE)
+========================= */
+
 .scroll-row {
-  scrollbar-width: none; /* Firefox */
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem;
+  scrollbar-width: none;
 }
 
 .scroll-row::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;
 }
 
 .service-card {
-  padding:1rem 0;
-  width: 245px;
+  flex: 0 0 auto;
+  width: min(245px, 80vw);
   height: 300px;
+  padding: 1rem 0;
   border-radius: 16px;
-  background: #962545; /* dark green like your image */
+  background: #962545;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   cursor: pointer;
   transition: transform 0.25s ease;
@@ -88,10 +159,50 @@ body{
   transform: translateY(-2px);
 }
 
+/* =========================
+   INPUTS & UTILITIES
+========================= */
 
-.search{
+.search {
+  width: 100%;
+  max-width: 400px;
   outline: none;
   border: none;
+}
+
+.transparentBorder {
+  border: 2px solid #962545;
+}
+
+.selected {
+  color: #962545;
+}
+
+/* =========================
+   RESPONSIVE BREAKPOINTS
+========================= */
+
+/* Phones */
+@media (max-width: 576px) {
+  .hero-content {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+  }
+
+  .service-card {
+    height: 260px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .hero-content h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+  }
 }
 
 

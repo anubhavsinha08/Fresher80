@@ -7,7 +7,7 @@
 /* Page background */
 .signin-wrapper {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0f1a1f, #070b0e);
+  /* background: linear-gradient(180deg, #0f1a1f, #070b0e); */
   display: flex;
   align-items: center;
   justify-content: center;

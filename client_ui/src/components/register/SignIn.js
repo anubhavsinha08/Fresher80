@@ -1,22 +1,138 @@
-import React from "react";
+import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+
 
 const SignIn = () => {
+    // let navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        UserName: "",
+        Email: "",
+        Password: "",
+        role: "",
+        phone: "",
+        desc: "",
+        country: ""
+    });
+
+    const handleChange = (e) => {
+        const { name, value} = e.target;
+
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const res = await fetch("http://localhost:3001/api/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...formData }),
+        });
+
+        const data = await res.json();
+        console.log({data});
+        setFormData({
+            UserName: "",
+            Email: "",
+            Password: "",
+            role: "",
+            phone: "",
+            desc: "",
+            country: ""
+        })
+        // navigate("/login")
+    };
+
+
     return (
-        <div className="signin-wrapper d-flex flex-column">
+        <div className="signin-wrapper d-flex flex-column" style={{ marginTop: "8rem" }}>
             <h1>Create account</h1>
-                    <p>Sign in to continue building with freshers80.</p>
-            <div className="signin-card">
+            <p>Sign in to continue building with freshers80.</p>
+            <div className="signin-card mt-5">
                 {/* Left Section */}
                 <div className="signin-left">
-                    
 
-                    <form className="signin-form">
-                        <input type="UserName" placeholder="Enter username" />
-                        <input type="email" placeholder="Email address" />
-                        <input type="password" placeholder="Password" />
 
-                        <button type="submit">Sign In</button>
+                    <form className="signin-form" onSubmit={handleSubmit}>
+
+                        <input
+                            type="text"
+                            name="UserName"
+                            value={formData.UserName}
+                            placeholder="Enter username"
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <input
+                            type="email"
+                            name="Email"
+                            value={formData.Email}
+                            placeholder="Email address"
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <input
+                            type="password"
+                            name="Password"
+                            value={formData.Password}
+                            placeholder="Password"
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <input
+                            type="text"
+                            name="country"
+                            value={formData.country}
+                            placeholder="Country"
+                            onChange={handleChange}
+                            required
+
+                        />
+
+                        <div className="d-flex gap-3">
+
+                            {/* Seller / Client */}
+                            <select
+                                name="role"
+                                // value={formData.role}
+                                onChange={handleChange}
+                                className="form-select rounded-4"
+                            >
+                                <option value="client">Client</option>
+                                <option value="freelancer">Freelancer</option>
+                            </select>
+
+
+                            <input
+                                type="tel"
+                                name="phone"
+                                value={formData.phone}
+                                placeholder="Phone Number"
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <textarea
+                            className="form-control"
+                            rows="5"
+                            placeholder="Description"
+                            name="desc"
+                            value={formData.desc}
+                            onChange={handleChange}
+                        />
+
+                        <button type="submit">Create account</button>
                     </form>
+
 
                     <span className="signin-footer">
                         Login to your account? <a href="/login">login</a>

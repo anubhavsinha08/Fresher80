@@ -1,0 +1,138 @@
+/* PAGE BASE */
+.category-wrapper {
+  /* background: radial-gradient(circle at top, #141e24, #050709); */
+  color: white;
+  min-height: 100vh;
+  padding-bottom: 100px;
+  /* font-family: "Inter", sans-serif; */
+}
+
+/* HERO */
+.category-hero {
+  padding: 120px 80px 60px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.category-hero h1 {
+  font-size: 56px;
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+/* SEARCH */
+.category-search {
+  display: flex;
+  max-width: 700px;
+}
+
+.category-search input {
+  flex: 1;
+  padding: 18px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+.category-search button {
+  background: #8f2345;
+  color: white;
+  border: none;
+  width: 60px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* FEATURES */
+.category-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  padding: 0 80px;
+}
+
+.feature span {
+  font-size: 36px;
+}
+
+.feature p {
+  margin-top: 12px;
+  opacity: 0.9;
+}
+
+/* GRID */
+.category-grid {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: 24px;
+}
+
+/* CARDS */
+.category-grid div {
+  border-radius: 22px;
+  padding: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.category-grid div:hover {
+  transform: translateY(-8px);
+}
+
+/* VARIANTS */
+.grid-large {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(135deg, #ffd6c9, #ffc3a0);
+  color: #000;
+}
+
+.grid-wide {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #d1f7ec, #a8f0dc);
+  color: #000;
+}
+
+.grid-tall {
+  grid-row: span 2;
+  background: linear-gradient(135deg, #c7d2fe, #a5b4fc);
+  color: #000;
+}
+
+.grid-small {
+  background: linear-gradient(135deg, #fcd34d, #fbbf24);
+  color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .category-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .category-hero {
+    padding: 80px 24px;
+  }
+
+  .category-features,
+  .category-grid {
+    padding: 0 24px;
+    grid-template-columns: 1fr;
+  }
+}
