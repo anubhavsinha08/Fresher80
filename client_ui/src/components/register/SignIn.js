@@ -15,7 +15,7 @@ const SignIn = () => {
     });
 
     const handleChange = (e) => {
-        const { name, value} = e.target;
+        const { name, value } = e.target;
 
         setFormData((prev) => ({
             ...prev,
@@ -36,7 +36,7 @@ const SignIn = () => {
         });
 
         const data = await res.json();
-        console.log({data});
+        console.log({ data });
         setFormData({
             UserName: "",
             Email: "",
@@ -88,37 +88,43 @@ const SignIn = () => {
                             required
                         />
 
-                        <input
-                            type="text"
-                            name="country"
-                            value={formData.country}
-                            placeholder="Country"
+                        <select
+                            name="role"
+                            // value={formData.role}
                             onChange={handleChange}
-                            required
-
-                        />
-
-                        <div className="d-flex gap-3">
-
-                            {/* Seller / Client */}
-                            <select
-                                name="role"
-                                // value={formData.role}
-                                onChange={handleChange}
-                                className="form-select rounded-4"
-                            >
-                                <option value="client">Client</option>
-                                <option value="freelancer">Freelancer</option>
-                            </select>
+                            className="form-select"
+                            style={{height:"4rem"}}
+                        >
+                            <option value="client">Client</option>
+                            <option value="freelancer">Freelancer</option>
+                        </select>
 
 
-                            <input
-                                type="tel"
-                                name="phone"
-                                value={formData.phone}
-                                placeholder="Phone Number"
-                                onChange={handleChange}
-                            />
+
+                        <div className="row d-flex flex-column gap-4">
+
+                            <div className="col-12 ">
+                                <input
+                                    type="text"
+                                    name="country"
+                                    value={formData.country}
+                                    placeholder="Country"
+                                    onChange={handleChange}
+                                    required
+                                    className="form-select "
+                                    
+                                />
+                            </div>
+                            <div className="col12 ">
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    value={formData.phone}
+                                    placeholder="Phone Number"
+                                    onChange={handleChange}
+                                    className="form-select "
+                                />
+                            </div>
                         </div>
 
                         <textarea

@@ -5,12 +5,12 @@ function Experts() {
 
 
     return (
-        <div className='container p-5 d-flex justify-content-between align-items-center' style={{ backgroundColor: "#962545", borderRadius: "2rem", margin:"15rem auto" }}>
-            <div className='row'>
+        <div className='container p-4 d-flex justify-content-between align-items-center' style={{backgroundColor:"white"}} >
+            <div className='row p-5' style={{ backgroundColor: "#962545", borderRadius: "2rem",width:"90vw"}}>
                 <div className='col-lg-5 col-sm-12 px-5 d-flex flex-column justify-content-center mb-5'>
-                    <h1 className='fw-light' style={{fontSize:"4rem"}}>Need help with Vibe coding?</h1>
+                    <h1 className='fw-light mb-5' style={{fontSize:"4rem"}}>Need help with Vibe coding?</h1>
                     <p className='fs-5'>Get matched with the right expert to keep building and marketing your project</p>
-                    <button className='border-0 p-3 mt-4 fs-4' style={{backgroundColor:"cream", width:"50%", borderRadius:"0.5rem"}}>Find an expert</button>
+                    <button className='border-0 p-3 mt-4 fs-4' style={{backgroundColor:"cream", width:"15rem", borderRadius:"0.5rem"}}>Find an expert</button>
                 </div>
                 <div className='col-lg-2 col-sm-0'></div>
                 <div className='col-lg-5 col-sm-12'>
