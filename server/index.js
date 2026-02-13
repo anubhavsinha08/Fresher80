@@ -94,4 +94,5 @@ app.use("/api/gigs",GigRoutes);
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
+  
 });
