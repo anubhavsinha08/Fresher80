@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import LogoutButton from"./LogoutButton";
 
 function Navbar() {
   let navigate = useNavigate();
@@ -13,11 +14,6 @@ function Navbar() {
 
   const token = localStorage.getItem("token");
 
-   const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("role");
-        navigate("/login");
-    };
 
 
   return (
@@ -81,13 +77,23 @@ function Navbar() {
             <li className="nav-item">
               {token ? (
                 <Link className="nav-link">
-                <p
-                  onClick={handleLogout}
-                  className={isActive("/login") ? activeMenuClass : menuClass}
-                  style={{ cursor: "pointer" }}
-                >
-                  Logout
-                </p>
+
+                  <div class="dropdown" style={{marginRight:"5rem"}}>
+                    <a class="btn active border-0 dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-regular fa-circle-user fa-lg"></i>
+                    </a>
+
+                    <ul class="dropdown-menu" >
+                      <li><p
+                        
+                        className="dropdown-item"
+                        style={{ cursor: "pointer" }}
+                      >
+                        <LogoutButton/>
+                      </p></li>
+                    </ul>
+                  </div>
+
                 </Link>
               ) : (
                 <Link to="/login" className="nav-link">
