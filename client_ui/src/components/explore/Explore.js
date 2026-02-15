@@ -1,50 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Explore.css";
 
 function Explore() {
-    const categories = [
-        "Web Development",
-        "AI & ML",
-        "UI/UX Design",
-        "Content Writing",
-        "Video Editing",
-        "Digital Marketing",
-        "Voice Over",
-        "Logo Design",
-    ];
+
+    const [gigs, setGigs] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchGigs = async () => {
+            try {
+                const res = await fetch("http://localhost:3001/api/gigs/");
+                const data = await res.json();
+
+                setGigs(data);
+                setLoading(false);
+
+            } catch (err) {
+                setError("Failed to fetch gigs");
+                setLoading(false);
+            }
+        };
+
+        fetchGigs();
+    }, []);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
+    if (gigs.length === 0) return <p>No gigs found</p>;
 
     return (
-        <div className="explore-page">
+        <div className="container d-flex gap-5" style={{margin:"10rem auto"}}>
+            {gigs.map((gig) => (
+                <div className="card" style={{width:"25rem"}} key={gig._id} >
+                    <img src={gig.cover} style={{ margin:"0.7rem", borderRadius:'1rem'}}/>
+                    <div className="card-body">
+                        <h4 className="card-title"><i class="fa-regular fa-circle-user fa-lg"></i> {gig.ownerName}</h4>
+                        <hr></hr>
+                        <h3 className="card-title">{gig.shortTitle}</h3>
+                        <p className="card-text">{gig.shortDesc}</p>
+                        <p className="card-text">From: ₹{gig.price}</p>
+                    </div>
 
-            {/* Header */}
-            <section className="explore-hero">
-                <h1>Explore Services</h1>
-                <p>Discover services from talented freelancers across all categories.</p>
-
-                <div className="explore-search">
-                    <input type="text" placeholder="Search for any service..." />
-                    <button>Search</button>
                 </div>
-            </section>
-
-            {/* Categories */}
-            <section className="explore-categories">
-                <h2>Browse by category</h2>
-
-                <div className="category-grid">
-                    {categories.map((cat, i) => (
-                        <div className="category-card" key={i}>
-                            {cat}
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-
-            <section className="explore-featured">
-                <iframe width="1060" height="600" src="https://www.youtube.com/embed/90Vvoffk9XM?si=pm33lvskWyIF4Dz3" title="YouTube video player" frameborder="0" allow=" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; " referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </section>
-
+            ))}
         </div>
     );
 }

@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+
+
 
 const LogIn = () => {
     const navigate = useNavigate();
-    // const token = localStorage.getItem("token");
+    const { login } = useContext(AuthContext);
 
 
     const [formData, setFormData] = useState({
@@ -32,21 +36,17 @@ const LogIn = () => {
 
             const { token, role } = res.data;
 
-            // ✅ Save token & role
-            localStorage.setItem("token", token);
-            localStorage.setItem("role", role);
+            login(token, role); // 🔥 IMPORTANT FIX
 
-            // ✅ Clear form
             setFormData({
                 Email: "",
                 Password: "",
             });
 
-            // ✅ Role-based redirect
             if (role === "freelancer" || role === "seller") {
-                navigate("/dashboard");
-            } else {
                 navigate("/");
+            } else {
+                navigate("/about");
             }
 
         } catch (error) {
@@ -58,13 +58,20 @@ const LogIn = () => {
         }
     };
 
-    // 🔒 Prevent logged-in users from accessing login page
+
     useEffect(() => {
         const token = localStorage.getItem("token");
-        if (token) {
-            navigate("/");
+        const role = localStorage.getItem("role");
+
+        if (token && role) {
+            if (role === "freelancer" || role === "seller") {
+                navigate("/dashboard");
+            } else {
+                navigate("/");
+            }
         }
     }, [navigate]);
+
 
     return (
         <div className="signin-wrapper d-flex flex-column">
