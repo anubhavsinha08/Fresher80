@@ -2,8 +2,14 @@
   background-color: #8f2345;
   color:white
 }
-img{
+.card img{
   width:23.5rem;
   height:15rem;
   overflow: hidden;
+}
+
+.card:hover{
+  /* scale: calc(1.2); */
+  /* transition: step-start; */
+  transform: scale(1.05);
 }

@@ -14,6 +14,7 @@ import ScrollToTop from './components/ScrollToTop';
 // import explore from './components/explore/Explore'
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Gig from './components/gig/Gig';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,16 +27,14 @@ root.render(
       <Route path='/' element={<App />} />
       <Route path='/about' element={<AboutPage />} />
       <Route path='/register' element={<SignIn />} />
-      {/* <Route path='/explore' element={<Explore />} /> */}
+      <Route path='/explore' element={<Explore />} />
        <Route
-            path="/explore"
+            path="/gig/:id"
             element={
-              <ProtectedRoute allowedRoles={["freelancer"]}>
-                <Explore/>
-              </ProtectedRoute>
+              <Gig/>
             }
           />
-      {/* <Route path='/category' element={<Category/>}/> */}
+      
       <Route path='/login' element={<LogIn />} />
       <Route path='/*' element={<NotFound />} />
       {/* <Route path='*' element={<NotFound/>}/> */}
