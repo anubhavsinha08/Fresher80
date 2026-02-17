@@ -46,7 +46,7 @@ const LogIn = () => {
             if (role === "freelancer" || role === "seller") {
                 navigate("/");
             } else {
-                navigate("/about");
+                navigate("/explore");
             }
 
         } catch (error) {
@@ -65,7 +65,7 @@ const LogIn = () => {
 
         if (token && role) {
             if (role === "freelancer" || role === "seller") {
-                navigate("/dashboard");
+                navigate("/explore");
             } else {
                 navigate("/");
             }

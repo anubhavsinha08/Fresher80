@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Explore.css";
+import { useNavigate } from "react-router-dom";
 
 function Explore() {
+    let navigate = useNavigate();
 
     const [gigs, setGigs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -32,7 +34,7 @@ function Explore() {
     return (
         <div className="container d-flex gap-5" style={{margin:"10rem auto"}}>
             {gigs.map((gig) => (
-                <div className="card" style={{width:"25rem"}} key={gig._id} >
+                <div className="card" style={{width:"25rem"}} key={gig._id}  onClick={() => navigate(`/gig/${gig._id}`)}>
                     <img src={gig.cover} style={{ margin:"0.7rem", borderRadius:'1rem'}}/>
                     <div className="card-body">
                         <h4 className="card-title"><i class="fa-regular fa-circle-user fa-lg"></i> {gig.ownerName}</h4>
