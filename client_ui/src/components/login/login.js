@@ -34,9 +34,13 @@ const LogIn = () => {
                 formData
             );
 
-            const { token, role } = res.data;
+            console.log(res);
 
-            login(token, role); // 🔥 IMPORTANT FIX
+            const { token, role, User} = res.data;
+
+            console.log(User)
+
+            login(token, role,User); // 🔥 IMPORTANT FIX
 
             setFormData({
                 Email: "",
@@ -44,9 +48,9 @@ const LogIn = () => {
             });
 
             if (role === "freelancer" || role === "seller") {
-                navigate("/");
-            } else {
                 navigate("/explore");
+            } else {
+                navigate("/");
             }
 
         } catch (error) {

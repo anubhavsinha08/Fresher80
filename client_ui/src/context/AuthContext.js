@@ -8,22 +8,27 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const role = localStorage.getItem("role");
-
-    if (token && role) {
-      setUser({ token, role });
+    const storedUser = localStorage.getItem("User");
+    
+    if (token && role && storedUser && storedUser !== "undefined") {
+      setUser({ token, role, User: JSON.parse(storedUser) });
     }
   }, []);
 
-  const login = (token, role) => {
+  const login = (token, role, User) => {
     localStorage.setItem("token", token);
     localStorage.setItem("role", role);
+    localStorage.setItem("User", JSON.stringify(User));
 
-    setUser({ token, role }); // 🔥 THIS IS WHAT FIXES YOUR ISSUE
+    setUser({ token, role,User}); // 🔥 THIS IS WHAT FIXES YOUR ISSUE
+
+    
   };
 
  const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("role");
+  localStorage.removeItem("User");
   setUser(null); // 🔥 THIS triggers rerender everywhere
 };
 

@@ -1,7 +1,12 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import LogoutButton from"./LogoutButton";
+import LogoutButton from "./LogoutButton";
+
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+
+
 
 function Navbar() {
   let navigate = useNavigate();
@@ -13,6 +18,9 @@ function Navbar() {
   const isActive = (path) => location.pathname === path;
 
   const token = localStorage.getItem("token");
+  // const userName = localStorage.getItem("userName");
+  const { user } = useContext(AuthContext);
+  console.log(user);
 
 
 
@@ -78,18 +86,19 @@ function Navbar() {
               {token ? (
                 <Link className="nav-link">
 
-                  <div class="dropdown" style={{marginRight:"5rem"}}>
-                    <a class="btn active border-0 dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa-regular fa-circle-user fa-lg"></i>
-                    </a>
+                  <div class="dropdown" style={{ marginRight: "5rem", marginTop:"-0.4rem" }}>
+                    <p class="menuClass btn active border-0 dropdown-toggle " role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                    style={{fontSize:"1.4rem"}}>
+                    {user?.User.UserName}
+                    </p>
 
                     <ul class="dropdown-menu" >
                       <li><p
-                        
+
                         className="dropdown-item"
                         style={{ cursor: "pointer" }}
                       >
-                        <LogoutButton/>
+                        <LogoutButton />
                       </p></li>
                     </ul>
                   </div>
