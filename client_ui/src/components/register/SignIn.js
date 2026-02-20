@@ -8,7 +8,7 @@ const SignIn = () => {
         UserName: "",
         Email: "",
         Password: "",
-        role: "",
+        role: "client",
         phone: "",
         desc: "",
         country: ""

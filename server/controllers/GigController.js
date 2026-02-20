@@ -36,10 +36,27 @@ const allGigs = async (req, res) => {
 
 }
 
-const viewGigs = (req, res) => {
-    const user = req.params;
+const viewGigs = async (req, res) => {
+    try {
+        const { id } = req.params;
 
-}
+        if (!id) {
+            return res.status(400).json({ message: "ID not provided" });
+        }
+
+        const gig = await GigModel.findById(id);
+
+        if (!gig) {
+            return res.status(404).json({ message: "Gig not found" });
+        }
+
+        res.status(200).json(gig);
+
+    } catch (err) {
+        res.status(500).json({ message: "Something went wrong!" });
+    }
+};
+
 
 
 module.exports = {

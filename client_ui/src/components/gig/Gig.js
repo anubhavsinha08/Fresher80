@@ -48,6 +48,7 @@ function Gig() {
                 <div>
                     <h1>About</h1>
                     <h2 className='fw-lighter my-3'>{gig.desc}</h2>
+                    
                 </div>
                 <div className='my-5 d-flex ' style={{ gap: "15rem" }}>
                     <div>
